@@ -1,0 +1,11 @@
+<input hidden="true"
+       type="file"
+       accept="text/csv"
+       [disabled]="isPending"
+       (change)="onFileChange(input.files)"
+       #input>
+<button class="btn btn-light btn-sm"
+        type="button"
+        (click)="input.value = null; input.click()"
+        [disabled]="isPending"
+>{{buttonTitle}}</button>

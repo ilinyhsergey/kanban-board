@@ -1,0 +1,97 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+@import '../node_modules/open-iconic/font/css/open-iconic-bootstrap.css';
+@import 'variables.styles';
+
+body {
+  font-size: 12px;
+  .k-column-super-header {
+    button.dropdown-toggle {
+      max-width: 270px;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.u-flex-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.u-flex-item {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+}
+
+.u-flex-grow {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: $color3;
+}
+
+.separator {
+  height: 0;
+  border-bottom: $color4 solid 1px;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.u-transparent {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.u-line-through {
+  text-decoration: line-through;
+}
+
+.u-button-tiny {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.u-float-right {
+  float: right;
+}
+
+
+/* Draggable*/
+.drag-border {
+  //border: #ff525b dashed 2px;
+}
+
+.drag-handle {
+  //cursor: move;
+}
+
+.drag-handle:active {
+  //cursor: move;
+}
+
+/* Droppable */
+.drag-hint-border {
+  //border: #3c763d dashed 2px;
+}
+
+.k-column-wrapper.drag-over-border,
+.k-unit-wrapper.drag-over-border {
+  //border: #fbbc05 dashed 2px;
+  opacity: 0.5;
+}
+
+.drag-transit {
+  //border: #3500FF dashed 2px;
+}

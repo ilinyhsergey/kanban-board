@@ -1,0 +1,32 @@
+<div class="modal-header">
+  <h4 class="modal-title">Sort column</h4>
+  <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="directionAsc">
+    <label ngbButtonLabel class="btn-outline-dark btn-sm">
+      <input ngbButton type="radio" [value]="true"> ASC
+    </label>
+    <label ngbButtonLabel class="btn-outline-dark btn-sm">
+      <input ngbButton type="radio" [value]="false"> DESC
+    </label>
+  </div>
+
+  <div class="keys">Sort by:</div>
+
+  <div class="keys">
+    <div *ngFor="let sortingMetaKey of sortingMetaKeys">
+      <input type="radio" [value]="sortingMetaKey" name="sortingMetaSelectedGroup"
+             (change)="sortingMetaSelected = sortingMetaKey">
+      {{sortingMetaKey}}
+    </div>
+  </div>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark btn-sm" (click)="applySort()" [disabled]="formInvalid()">Apply</button>
+  <button type="button" class="btn btn-outline-dark btn-sm" (click)="dismiss()">Close</button>
+</div>

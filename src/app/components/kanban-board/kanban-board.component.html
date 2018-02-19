@@ -1,0 +1,66 @@
+<div class="k-board" #board>
+
+  <nav class="navbar navbar-light bg-light k-header">
+    <form class="form-inline">
+      <app-data-reader buttonTitle="Import Units" (pending)="pending"
+                       (fileRead)="onUnitsFileRead($event)"></app-data-reader>
+      <app-data-reader buttonTitle="Import System Tasks" (pending)="pending"
+                       (fileRead)="onSystemTasksFileRead($event)"></app-data-reader>
+      <button class="btn btn-light btn-sm" type="button" (click)="exportForDownload()">Export</button>
+    </form>
+  </nav>
+
+  <div class="k-column-container"
+       droppable [dropScope]="'column'" (onDrop)="onDrop($event)">
+
+    <div class="k-column-wrapper"
+         *ngFor="let column of columns; let colIdx = index"
+         draggable [dragScope]="'column'" [dragData]="column" [dragHandle]="'.k-drag-columns-handle'"
+         (onDragStart)="onColumnDragStart($event)" (onDragEnd)="onDragEnd($event)"
+         droppable [dropScope]="'column'" (onDrop)="onDrop($event, column)">
+
+      <div class="k-column-super-header">
+        <div>(#{{colIdx + 1}}) {{column.name}}</div>
+        <ss-multiselect-dropdown
+          [options]="unitKeysForDescription"
+          [settings]="descriptionKeysSettings"
+          [(ngModel)]="column.descriptionUnitKeys"
+          (ngModelChange)="onDescriptionKeysSelected(column)"
+        ></ss-multiselect-dropdown>
+      </div>
+
+      <div class="k-column">
+
+        <div class="k-column-header" [style.background-color]="column.color">
+          <div>
+            <button type="button" class="btn btn-light btn-sm u-transparent u-button-tiny k-drag-columns-handle">
+              <span class="oi oi-menu k-drag-columns-handle" title="Drag column" aria-hidden="true"></span>
+            </button>
+            <span>(#{{colIdx + 1}}) {{column.name}}</span>
+            <button type="button" class="btn btn-light btn-sm u-transparent u-button-tiny u-float-right"
+                    (click)="sortUnits(column)">
+              <span class="oi oi-sort-descending" title="Sort units" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div>Total units: {{column.units.length}}</div>
+        </div>
+        <div class="k-unit-container" droppable [dropScope]="'unit'" (onDrop)="onDrop($event, column)">
+
+          <div class="k-unit-wrapper" *ngFor="let unit of column.units; let unitIdx = index"
+               draggable [dragScope]="'unit'" [dragData]="unit" [dragHandle]="'.k-drag-units-handle'"
+               (onDragStart)="onUnitDragStart(column, $event)" (onDragEnd)="onDragEnd($event)"
+               droppable [dropScope]="'unit'" (onDrop)="onDrop($event, column, unit)">
+            <app-unit
+              [unit]="unit"
+              [column]="column"
+              [columnName2SystemTasks]="columnName2SystemTasks"
+              [unitIdx]="unitIdx"
+            ></app-unit>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

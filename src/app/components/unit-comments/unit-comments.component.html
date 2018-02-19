@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h4 class="modal-title">Comments</h4>
+  <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="header u-flex-container">
+    <div class="text u-flex-grow">
+      <textarea [(ngModel)]="newComment"></textarea>
+    </div>
+    <button type="button" class="btn btn-secondary btn-sm add" (click)="addComment()">+ Add</button>
+  </div>
+  <div *ngFor="let comment of comments" class="comment u-flex-container">
+    <div class="time">{{comment.dateTime}}</div>
+    <div class="u-flex-grow truncate">{{comment.comment}}</div>
+    <button type="button" class="btn btn-light btn-sm u-transparent u-button-tiny" (click)="removeComment(comment)">
+      <span class="oi oi-trash" title="Remove comment" aria-hidden="true"></span>
+    </button>
+  </div>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark btn-sm" (click)="close(comments)">Apply</button>
+  <button type="button" class="btn btn-outline-dark btn-sm" (click)="dismiss()">Close</button>
+</div>

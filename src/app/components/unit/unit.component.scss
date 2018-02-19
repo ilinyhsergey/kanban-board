@@ -1,0 +1,32 @@
+@import '../../../variables.styles';
+
+.k-unit {
+
+  border: $color4 solid 1px;
+  border-left-width: 5px;
+  background-color: $color2;
+  border-radius: 4px;
+  margin-bottom: $marginSizeSmall;
+
+  padding: $marginSizeSmall;
+
+  .k-unit-header {
+    .k-unit-rank {
+      color: #fff;
+      background-color: #ff7f27;
+    }
+  }
+  .k-unit-description {
+    pre {
+      margin: 0;
+    }
+  }
+  .k-unit-tasks {
+  }
+}
+
+.k-collapsed {
+  height: 0;
+  overflow-y: hidden;
+}
+

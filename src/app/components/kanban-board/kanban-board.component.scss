@@ -1,0 +1,82 @@
+@import '../../../variables.styles';
+
+.k-board {
+  position: relative;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 100%;
+  overflow: scroll;
+
+  .k-header {
+    display: inline-block;
+    position: static;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+  }
+
+  .k-column-container {
+    display: inline-block;
+    white-space: nowrap;
+
+    margin: 0 0 0 $marginSizeBig;
+    padding-right: $marginSizeBig;
+  }
+
+  .k-column-wrapper {
+    display: inline-block;
+    vertical-align: top;
+
+    padding: $marginSizeSmall $marginSizeBig $marginSizeBig 0;
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  .k-column-super-header,
+  .k-column {
+    width: 270px;
+  }
+
+  .k-column-super-header {
+    margin-bottom: $marginSizeBig;
+  }
+
+  .k-column {
+    border: $color2 solid 1px;
+    border-radius: 4px;
+
+    .k-column-header {
+      background-color: $color3;
+      border-bottom: $color2 solid 1px;
+      padding: $marginSizeSmall;
+    }
+
+    .k-unit-container {
+      padding: $marginSizeSmall $marginSizeSmall 25px;
+    }
+  }
+
+}
+
+.test-moved {
+  bacground: grey;
+}
+
+.drag-border {
+  //border: red solid 1px;
+}
+
+.drag-transit {
+  //border: green solid 1px;
+}
+
+.drag-over-border {
+  //border: blue solid 1px;
+}
+
+.drag-hint-border {
+  //border: yellow solid 1px;
+}

@@ -1,0 +1,13 @@
+@import '../../../variables.styles';
+
+.k-tasks {
+
+  margin: $marginSizeSmall 0;
+
+  .k-task {
+    .check {
+      margin-top: 1px;
+    }
+  }
+}
+

@@ -1,0 +1,47 @@
+<div class="k-unit" *ngIf="!!unit">
+  <div class="k-unit-header">
+    <button type="button" class="btn btn-light btn-sm u-transparent u-button-tiny k-drag-units-handle">
+      <span class="oi oi-menu k-drag-units-handle" title="Drag unit" aria-hidden="true"></span>
+    </button>
+
+    <button type="button" class="btn btn-light btn-sm u-transparent u-button-tiny"
+            (click)="unit.collapsed = false" *ngIf="unit.collapsed">
+      <span class="oi oi-caret-right" title="Expand unit" aria-hidden="true"></span>
+    </button>
+
+    <button type="button" class="btn btn-light btn-sm u-transparent u-button-tiny"
+            (click)="unit.collapsed = true" *ngIf="!unit.collapsed">
+      <span class="oi oi-caret-bottom" title="Collapse unit" aria-hidden="true"></span>
+    </button>
+    <span>(#{{unitIdx + 1}}) {{unit.unitNumber}}</span>
+    <span class="badge badge-warning k-unit-rank u-float-right">{{ (unit.rankChange > 0 ? '+' : '') + unit.rankChange }}</span>
+    <button type="button" class="btn btn-light btn-sm u-transparent u-button-tiny u-float-right"
+            (click)="removeUnit(unit)" *ngIf="canBeRemoved">
+      <span class="oi oi-trash" title="Remove unit" aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="k-unit-description">
+    <pre>{{unit.description}}</pre>
+  </div>
+  <div class="k-unit-tasks" [class.k-collapsed]="unit.collapsed">
+    <div class="k-tasks">
+      <!--<span>System Section</span>-->
+      <app-unit-tasks
+        [tasks]="columnName2SystemTasks[column.name]"
+        [(taskId2Status)]="unit.systemTasksStatus"
+      ></app-unit-tasks>
+    </div>
+    <div class="separator" *ngIf="columnName2SystemTasks[column.name]?.length && unit.userTasks?.length"></div>
+    <div class="k-tasks">
+      <!--<span>User Section</span>-->
+      <app-unit-tasks
+        [tasks]="unit.userTasks"
+        [(taskId2Status)]="unit.userTasksStatus"
+        [editable]="true"
+      ></app-unit-tasks>
+    </div>
+    <button type="button" class="btn btn-secondary btn-sm" (click)="openComments(unit)">Comments
+      {{unit.comments?.length}}
+    </button>
+  </div>
+</div>

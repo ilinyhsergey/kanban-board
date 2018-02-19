@@ -1,0 +1,19 @@
+<div class="k-tasks">
+
+  <div *ngFor="let task of tasks" class="k-task u-flex-container">
+    <div class="check">
+      <input type="checkbox" [(ngModel)]="taskId2Status[task.id]">
+    </div>
+    <div class="u-flex-grow truncate" [class.u-line-through]="taskId2Status[task.id]">{{task.name}}</div>
+    <button type="button" class="btn btn-light btn-sm u-transparent u-button-tiny" (click)="removeTask(task)" *ngIf="editable">
+      <span class="oi oi-trash" title="Remove task" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <input
+    [(ngModel)]="newTaskName"
+    (keypress)="addTask($event)"
+    placeholder="Add subtask and hit enter"
+    *ngIf="editable">
+
+</div>
